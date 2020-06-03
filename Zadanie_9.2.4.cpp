@@ -80,19 +80,19 @@ void tdmat_print(TDMAT *mat)
     
 	for(i = 0; i < mat->size-1; i++)
 	{
-    	printf("%f ", mat->udiag[i]);
+    	printf("%.f ", mat->udiag[i]);
 	}
 	printf("\n");
 	
     for(j = 0; j < mat->size; j++)
 	{
-    	printf("%f ", mat->diag[j]);
+    	printf("%.f ", mat->diag[j]);
 	}
 	printf("\n");
 	
     for(k = 0; k < mat->size-1; k++)
 	{
-    	printf("%f ", mat->ldiag[k]);
+    	printf("%.f ", mat->ldiag[k]);
     }
     printf("\n\n");
     
@@ -133,6 +133,8 @@ float tdmat_trace(TDMAT *mat)
 
 int main()
 {
+	srand(time(NULL));
+	
 	unsigned int a;
 	float h;
 	
