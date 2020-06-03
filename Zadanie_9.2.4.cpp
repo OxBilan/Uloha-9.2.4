@@ -52,8 +52,31 @@ void tdmat_unit(TDMAT *mat)
     	mat->ldiag[i] = 0;
     	printf("%f ", mat->ldiag[i]);
     }
+    printf("\n");
 }
 
+void tdmat_random(TDMAT *mat)
+{
+	int i;
+	float b[mat->size], c[mat->size], d[mat->size];
+
+	mat->udiag = b;
+	mat->diag = c;
+	mat->ldiag = d;
+	
+	for(i = 0; i < mat->size; i++)
+	{
+    	mat->udiag[i] = (rand()/(float)(RAND_MAX)) * 2 - 1;
+    	printf("%f ", mat->udiag[i]);
+
+    	mat->diag[i] = (rand()/(float)(RAND_MAX)) * 2 - 1;
+    	printf("%f ", mat->diag[i]);
+    
+    	mat->ldiag[i] = (rand()/(float)(RAND_MAX)) * 2 - 1;
+    	printf("%f ", mat->ldiag[i]);
+    }
+    printf("\n");
+}
 
 int main()
 {
@@ -69,6 +92,8 @@ int main()
     c->size = a;
     
     tdmat_unit(c);
-
+    
+    tdmat_random(c);
+    
     tdmat_destroy(c);
 }
