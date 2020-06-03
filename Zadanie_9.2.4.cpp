@@ -11,10 +11,10 @@ typedef struct
     float *ldiag;
     
 } TDMAT;
- 
+
 TDMAT *tdmat_create_with_type(unsigned int size)
 {
-    TDMAT* t = (TDMAT*)malloc(sizeof(float)*size*size);
+    TDMAT* t = (TDMAT*)malloc(sizeof(TDMAT));
     
     if(t == NULL)
     {
@@ -114,11 +114,27 @@ void tdmat_print(TDMAT *mat)
 	{
     	printf("%f ", mat->ldiag[n]);
     }
+    printf("\n\n");
+}
+
+float tdmat_trace(TDMAT *mat)
+{	
+	int i;
+	float m;
+    
+	for(i = 0; i < mat->size; i++)
+	{
+		m += mat->diag[i];
+    	printf("%f ", mat->diag[i]);
+    }
+	
+    return m;
 }
 
 int main()
 {
 	unsigned int a;
+	float h;
 	
     TDMAT* c;
     
@@ -129,13 +145,16 @@ int main()
     
     c->size = a;
     
-    float e[c->size-1], f[c->size], g[c->size-1];
+    float d[c->size-1], e[c->size], f[c->size-1];
 
-	c->udiag = e;
-	c->diag = f;
-	c->ldiag = g;
+	c->udiag = d;
+	c->diag = e;
+	c->ldiag = f;
     
     tdmat_print(c);
+    
+    h = tdmat_trace(c);
+    printf("\nStopa matice: %f", h);
     
     tdmat_destroy(c);
 }
