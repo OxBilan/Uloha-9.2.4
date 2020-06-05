@@ -34,41 +34,41 @@ void tdmat_destroy(TDMAT *mat)
 
 void tdmat_unit(TDMAT *mat)
 {
-	int i, j, k;
+	int i;
 	
-	for(i = 0; i < mat->size-1; i++)
+	for(i = 0; i < mat->size; i++)
 	{
-    	mat->udiag[i] = 0;
-	}
-	
-	for(j = 0; j < mat->size; j++)
-	{
-    	mat->diag[j] = 1;
-	}
-	
-	for(k = 0; k < mat->size-1; k++)
-	{
-    	mat->ldiag[k] = 0;
+		if(i == mat->size)
+		{
+			continue;
+		}
+		else
+    	{
+    		mat->udiag[i] = 0;
+    		mat->ldiag[i] = 0;
+    	}
+    	
+    	mat->diag[i] = 1;
 	}
 }
 
 void tdmat_random(TDMAT *mat)
 {
-	int i, j, k;
+	int i;
 	
-	for(i = 0; i < mat->size-1; i++)
+	for(i = 0; i < mat->size; i++)
 	{
-    	mat->udiag[i] = (rand()/(float)(RAND_MAX)) * 2 - 1;
-	}
-	
-	for(j = 0; j < mat->size; j++)
-	{
-    	mat->diag[j] = (rand()/(float)(RAND_MAX)) * 2 - 1;
-	}
-	
-	for(k = 0; k < mat->size-1; k++)
-	{
-    	mat->ldiag[k] = (rand()/(float)(RAND_MAX)) * 2 - 1;
+		if(i == mat->size)
+		{
+			continue;
+		}
+		else
+    	{
+			mat->udiag[i] = (rand()/(float)(RAND_MAX)) * 2 - 1;
+    		mat->ldiag[i] = (rand()/(float)(RAND_MAX)) * 2 - 1;
+    	}
+    	
+    	mat->diag[i] = (rand()/(float)(RAND_MAX)) * 2 - 1;
 	}
 }
 
