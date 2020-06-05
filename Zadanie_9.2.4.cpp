@@ -14,7 +14,7 @@ typedef struct
 
 TDMAT *tdmat_create_with_type(unsigned int size)
 {
-    TDMAT* t = (TDMAT*)malloc(sizeof(TDMAT));
+    TDMAT* t = (TDMAT*)malloc(sizeof(TDMAT)*size*size*size);
     
     if(t == NULL)
     {
