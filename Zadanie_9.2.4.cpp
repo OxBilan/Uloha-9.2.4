@@ -120,7 +120,7 @@ void tdmat_print(TDMAT *mat)
 float tdmat_trace(TDMAT *mat)
 {	
 	int i;
-	float m;
+	float m = 0;
     
 	for(i = 0; i < mat->size; i++)
 	{
