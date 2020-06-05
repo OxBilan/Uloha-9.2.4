@@ -114,7 +114,7 @@ void tdmat_print(TDMAT *mat)
 	{
     	printf("%f ", mat->ldiag[n]);
     }
-    printf("\n\n");
+    printf("\n");
 }
 
 float tdmat_trace(TDMAT *mat)
@@ -125,7 +125,6 @@ float tdmat_trace(TDMAT *mat)
 	for(i = 0; i < mat->size; i++)
 	{
 		m += mat->diag[i];
-    	printf("%f ", mat->diag[i]);
     }
 	
     return m;
