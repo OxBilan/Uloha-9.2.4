@@ -18,8 +18,8 @@ TDMAT *tdmat_create_with_type(unsigned int size)
 
     if(t == NULL)
     {
+    	return NULL;
 		free(t);
-		return NULL;
 	}
 	else
 	{
