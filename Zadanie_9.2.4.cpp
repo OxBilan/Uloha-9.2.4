@@ -15,6 +15,9 @@ typedef struct
 TDMAT *tdmat_create_with_type(unsigned int size)
 {
     TDMAT* t = (TDMAT*)malloc(sizeof(TDMAT));
+    t->udiag = (float*)malloc(sizeof(float)*size);
+    t->diag = (float*)malloc(sizeof(float)*size);
+    t->ldiag = (float*)malloc(sizeof(float)*size);
 
     if(t == NULL)
     {
@@ -29,6 +32,9 @@ TDMAT *tdmat_create_with_type(unsigned int size)
  
 void tdmat_destroy(TDMAT *mat)
 {	
+	free(mat->udiag);
+	free(mat->diag);
+	free(mat->ldiag);
 	free(mat);
 }
 
@@ -123,12 +129,6 @@ int main()
     c = tdmat_create_with_type(a);
     
     c->size = a;
-    
-    float d[c->size-1], e[c->size], f[c->size-1];
-
-	c->udiag = d;
-	c->diag = e;
-	c->ldiag = f;
     
     tdmat_unit(c);
     tdmat_print(c);
