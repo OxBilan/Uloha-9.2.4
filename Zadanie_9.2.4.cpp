@@ -15,14 +15,20 @@ typedef struct
 TDMAT *tdmat_create_with_type(unsigned int size)
 {
     TDMAT* t = (TDMAT*)malloc(sizeof(TDMAT));
-    t->udiag = (float*)malloc(sizeof(float)*size);
-    t->diag = (float*)malloc(sizeof(float)*size);
-    t->ldiag = (float*)malloc(sizeof(float)*size);
-
+    
     if(t == NULL)
     {
     	return NULL;
+	}
+    
+    t->udiag = (float*)malloc(sizeof(float)*size);
+    t->diag = (float*)malloc(sizeof(float)*size);
+    t->ldiag = (float*)malloc(sizeof(float)*size);
+    
+	if(t->udiag == NULL || t->diag == NULL || t->ldiag == NULL)
+	{
 		free(t);
+		return NULL;
 	}
 	else
 	{
