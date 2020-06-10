@@ -22,22 +22,24 @@ TDMAT *tdmat_create_with_type(unsigned int size)
 	}
     
     t->udiag = (float*)malloc(sizeof(float)*size);
-    t->diag = (float*)malloc(sizeof(float)*size);
-    t->ldiag = (float*)malloc(sizeof(float)*size);
     
-	if(t->udiag == NULL)
+    if(t->udiag == NULL)
 	{
 		free(t);
 		return NULL;
 	}
 	
-	if(t->diag == NULL)
+    t->diag = (float*)malloc(sizeof(float)*size);
+    
+    if(t->diag == NULL)
 	{
 		free(t->udiag);
 		free(t);
 		return NULL;
 	}
 	
+    t->ldiag = (float*)malloc(sizeof(float)*size);
+    
 	if(t->ldiag == NULL)
 	{
 		free(t->udiag);
