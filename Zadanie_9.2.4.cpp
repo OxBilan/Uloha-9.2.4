@@ -47,10 +47,8 @@ TDMAT *tdmat_create_with_type(unsigned int size)
 		free(t);
 		return NULL;
 	}
-	else
-	{
-    	return t;
-	}
+
+   	return t;
 }
  
 void tdmat_destroy(TDMAT *mat)
